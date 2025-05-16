@@ -34,11 +34,20 @@
   }
   .contianer-slider-wrapper {
     margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+
     .item-slider {
       background: #F3F5F9;
       max-width: 580px;
       padding: 20px;
       border-radius: 10px;
+      transition: .3s ease all;
+      cursor: default;
+      &:hover {
+        border-radius: 10px;
+        background: #FECB21;
+      }
     }
     .title-container-slider {
       display: flex;
