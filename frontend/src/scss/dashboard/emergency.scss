@@ -1,0 +1,27 @@
+.emergency-service {
+  margin-top: 46px;
+
+  .title-container {
+    border-radius: 10px;
+    background: linear-gradient(90deg, #054FC3 0%, #182F53 100%);
+    padding: 22px 26px;
+
+    .h3 {
+      color: #FFF;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 45px */
+      letter-spacing: -0.9px;
+    }
+
+    p {
+      color: #FFF;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 30px */
+      letter-spacing: -0.6px;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+import {Link} from "react-router-dom";
+
+export const PaymentInformation = () => {
+    return (
+        <>
+            <div className="container-profile-information">
+                <div className="navigation-profile">
+                    <Link to={'/profile'}
+                          className={`navigation-link-profile ${location.pathname === '/profile' ? 'active-link' : ''} `}>Profile
+                        settings</Link>
+                    <Link to={'/profile/payment'}
+                          className={`navigation-link-profile ${location.pathname === '/profile/payment' ? 'active-link' : ''} `}>Payment
+                        settings</Link>
+                </div>
+                <div className="payment-information">
+                    <div className="cart-container">
+                        <div className="top-line">
+                            <div className="title-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                     fill="none">
+                                    <path d="M12.7993 5L6.19928 11.6L3.19922 8.6" stroke="white" strokeWidth="3"
+                                          strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                                <p>Add your card</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="28" viewBox="0 0 48 28"
+                                 fill="none">
+                                <circle cx="14" cy="14" r="14" fill="#CF1928"/>
+                                <circle cx="30" cy="14" r="14" fill="#FFD400" fill-opacity="0.7"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 40 10"
+                                 fill="none">
+                                <path
+                                    d="M15.177 0.500328L9.94239 9.54608H6.51852L3.95062 2.31425C3.78601 1.86077 3.65432 1.71757 3.19342 1.52663C2.17914 1.17272 1.10566 0.915975 0 0.76287L0.0658436 0.500328H5.56379C6.30694 0.50276 6.93632 0.898203 7.04527 1.43116L8.39506 6.65812L11.7531 0.500328H15.177ZM28.5761 6.58652C28.5761 4.19978 24.0329 4.05657 24.0658 3.00641C24.0658 2.67226 24.4938 2.33812 25.4486 2.24265C26.5439 2.1685 27.6467 2.30861 28.642 2.6484L29.2016 0.739002C28.235 0.469915 27.2083 0.332366 26.1728 0.333256C22.9794 0.333256 20.7407 1.57436 20.7078 3.31668C20.6749 4.62939 22.321 5.34541 23.5391 5.77503C24.7572 6.20464 25.2181 6.51492 25.2181 6.8968C25.2181 7.49348 24.1975 7.77989 23.2757 7.77989C22.1173 7.80311 20.9708 7.60559 19.9506 7.20707L19.358 9.18807C20.498 9.51979 21.7183 9.68212 22.9465 9.66542C26.3374 9.68928 28.5432 8.47204 28.5761 6.58652ZM37.0041 9.54608H40L37.3992 0.500328H34.6337C34.0268 0.495057 33.4777 0.760449 33.251 1.16862L28.3786 9.54608H31.7695L32.428 8.18564H36.5761L37.0041 9.54608ZM33.3827 6.34784L35.0947 2.95867L36.0823 6.34784H33.3827ZM19.786 0.500328L17.1193 9.54608H13.893L16.5597 0.500328H19.786Z"
+                                    fill="#1A1F71"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}

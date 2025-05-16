@@ -1,0 +1,117 @@
+.container-main-auth-form {
+  max-width: 630px;
+  width: 100%;
+  background: var(--white-color);
+  padding: 80px 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0px 4px 30.3px 0px rgba(0, 0, 0, 0.10);
+  max-height: 100vh;
+  overflow-y: auto;
+
+  .main-input-auth {
+    margin-bottom: 32px;
+  }
+
+  .container-auth-wrapper {
+    padding: 30px;
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+  }
+
+  .container-btn {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 24px;
+
+    button {
+      max-width: 100%;
+      width: 100%;
+      height: 48px;
+      background: #182F53;
+      cursor: pointer;
+
+      span {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        color: var(--white-color);
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+  .or-container {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    span {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    .line-wrapper {
+      width: 193px;
+      height: 1px;
+      background: #242121;
+      position: relative;
+    }
+  }
+
+  .btn-auth-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    button {
+      padding: 12px 16px;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      display: flex;
+      gap: 8px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid #242121;
+    }
+
+    .register-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        cursor: pointer;
+        color: #0126E5;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; /* 150% */
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use "./auth/mainform.scss";
+// Main Form Auth
+@use "./input.scss";
+// Input style
+@use "./auth/registerform.scss";
+// Register Form
+@use "./dashboard/main.scss";
+// Main Dashboard
+@use "./dashboard/header.scss";
+// Header
+@use "./dashboard/profile.scss";
+// Profile
+@use "./dashboard/notification.scss";
+// Notifications
+@use "./dashboard/mainpage.scss";
+// Main Page
+@use "./dashboard/parking.scss";
+// Parking Page
+@use "./dashboard/emergency.scss";
+// Emergency Page
+@use "./auth/forgotpass.scss"; // ForgotPass Page
+@use "./dashboard/mapservice.scss"; // Map Scss Page
+@use "./dashboard/vehicle"; // Vehicle Scss Page
+@use "./dashboard/tenantemergency.scss"; // Tenant Emergency
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+                  135deg,
+                  #cfe2f3 0%,
+                  #e6eef5 30%,
+                  #ffffff 50%,
+                  #fff7d1 70%,
+                  #fffdd0 90%
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button, input {
+  outline: none;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+:root {
+  --white-color: #FFFFFF;
+
+}
