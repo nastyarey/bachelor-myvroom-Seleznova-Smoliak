@@ -6,8 +6,11 @@ import {format} from "date-fns";
 import Select, {components} from 'react-select';
 import {dateTimeOptions} from "../../utils/dateTime.ts";
 import {Timer} from "./Timer.tsx";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Dropzone from 'react-dropzone'
+import {NotificationsWeather} from "./NotificationsWeather.tsx";
+
+
 export const ParkingService = () => {
     const [selectType, setSelectType] = useState<'parking' | 'vehicle'>('parking');
     const [files, setFiles] = useState<File | null>(null);
@@ -29,7 +32,7 @@ export const ParkingService = () => {
     }
     const CustomPlaceholder = (props: any) => (
         <components.Placeholder {...props}>
-    <span style={{display: 'flex', alignItems: 'center', gap: 6}}>
+    <span style={{display: 'flex', alignItems: 'center',  gap: 80, fontSize: 20}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path
       d="M21.75 12C21.75 14.5859 20.7228 17.0658 18.8943 18.8943C17.0658 20.7228 14.5859 21.75 12 21.75C9.41414 21.75 6.93419 20.7228 5.10571 18.8943C3.27723 17.0658 2.25 14.5859 2.25 12C2.25 9.41414 3.27723 6.93419 5.10571 5.10571C6.93419 3.27723 9.41414 2.25 12 2.25C14.5859 2.25 17.0658 3.27723 18.8943 5.10571C20.7228 6.93419 21.75 9.41414 21.75 12ZM0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 8.8174 22.7357 5.76516 20.4853 3.51472C18.2348 1.26428 15.1826 0 12 0C8.8174 0 5.76516 1.26428 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12ZM10.875 5.625V12C10.875 12.375 11.0625 12.7266 11.3766 12.9375L15.8766 15.9375C16.3922 16.2844 17.0906 16.1437 17.4375 15.6234C17.7844 15.1031 17.6437 14.4094 17.1234 14.0625L13.125 11.4V5.625C13.125 5.00156 12.6234 4.5 12 4.5C11.3766 4.5 10.875 5.00156 10.875 5.625Z"
@@ -41,7 +44,7 @@ export const ParkingService = () => {
     )
     const CustomSingleValue = (props: any) => (
         <components.SingleValue {...props}>
-    <span style={{display: 'flex', alignItems: 'center', gap: 6}}>
+    <span style={{display: 'flex', alignItems: 'center',  gap: 80, fontSize: 20}}>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path
       d="M21.75 12C21.75 14.5859 20.7228 17.0658 18.8943 18.8943C17.0658 20.7228 14.5859 21.75 12 21.75C9.41414 21.75 6.93419 20.7228 5.10571 18.8943C3.27723 17.0658 2.25 14.5859 2.25 12C2.25 9.41414 3.27723 6.93419 5.10571 5.10571C6.93419 3.27723 9.41414 2.25 12 2.25C14.5859 2.25 17.0658 3.27723 18.8943 5.10571C20.7228 6.93419 21.75 9.41414 21.75 12ZM0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 8.8174 22.7357 5.76516 20.4853 3.51472C18.2348 1.26428 15.1826 0 12 0C8.8174 0 5.76516 1.26428 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12ZM10.875 5.625V12C10.875 12.375 11.0625 12.7266 11.3766 12.9375L15.8766 15.9375C16.3922 16.2844 17.0906 16.1437 17.4375 15.6234C17.7844 15.1031 17.6437 14.4094 17.1234 14.0625L13.125 11.4V5.625C13.125 5.00156 12.6234 4.5 12 4.5C11.3766 4.5 10.875 5.00156 10.875 5.625Z"
@@ -84,6 +87,7 @@ export const ParkingService = () => {
     return (
         <>
             <div ref={calendarRef} className="parking-service">
+                <NotificationsWeather />
                 <div className="navigation-container-parking">
                     <div className="container-flex-btn">
                         <div className={`btn-nav-parking ${selectType === 'parking' ? 'select-thumb-btn' : ''}`}
@@ -128,7 +132,7 @@ export const ParkingService = () => {
                                             fill="#626162"/>
                                     </svg>
                                     {date ? <span>{format(date[0], 'dd/MM/yyyy')}</span> : <span>Choose date</span>}
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
+                                    <svg  className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
                                          fill="none">
                                         <path d="M21.18 0L12 9.27126L2.82 0L0 2.85425L12 15L24 2.85425L21.18 0Z"
                                               fill="#7E7D7D"/>
@@ -142,7 +146,7 @@ export const ParkingService = () => {
                                             fill="#626162"/>
                                     </svg>
                                     {date ? <span>{format(date[1], 'dd/MM/yyyy')}</span> : <span>Choose date</span>}
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
+                                    <svg className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
                                          fill="none">
                                         <path d="M21.18 0L12 9.27126L2.82 0L0 2.85425L12 15L24 2.85425L21.18 0Z"
                                               fill="#7E7D7D"/>
@@ -166,6 +170,8 @@ export const ParkingService = () => {
                                                 backgroundColor: '#F3F5F9',
                                                 border: 'none',
                                                 borderRadius: '10px',
+                                                display: 'flex',
+                                                justifyContent:'space-between',
                                                 minHeight: '51px',
                                                 boxShadow: 'none',
                                                 '&:hover': {
@@ -321,12 +327,7 @@ export const ParkingService = () => {
                                 </div>
                             </div>
                             <div className="btn-close-btn" onClick={() => handlerStep('reset')}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
-                                     fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd"
-                                          d="M19.6404 3.09552C20.1199 2.61614 20.1199 1.83891 19.6404 1.35953C19.1611 0.880156 18.3838 0.880156 17.9046 1.35953L10.5 8.76404L3.09553 1.35953C2.61614 0.880156 1.83891 0.880156 1.35953 1.35953C0.880156 1.83891 0.880156 2.61614 1.35953 3.09552L8.76402 10.5L1.35953 17.9045C0.880156 18.384 0.880156 19.1611 1.35953 19.6405C1.83891 20.1198 2.61614 20.1198 3.09553 19.6405L10.5 12.236L17.9046 19.6405C18.3838 20.1198 19.1611 20.1198 19.6404 19.6405C20.1199 19.1611 20.1199 18.384 19.6404 17.9045L12.236 10.5L19.6404 3.09552Z"
-                                          fill="#054FC3" stroke="#054FC3"/>
-                                </svg>
+
                             </div>
                         </div>
                         <div className="container-places-parking">
@@ -1728,7 +1729,23 @@ export const ParkingService = () => {
                         </button>
                     </div>
                     {notification ? <div className="pop-up-notyf">
-
+                        <div className="bg-lock"></div>
+                        <div className="content-wrapper-pop-up">
+                            <div className="title-container">
+                                <p>Notification</p>
+                            </div>
+                            <div className="title-btn-container">
+                                <p>Obstructing Vehicle Owner</p>
+                            </div>
+                            <div className="text-area-cont">
+                                <p>Thank you for reporting the obstruction. We have notified the vehicle owner, and they have been requested to move their car as soon as possible. Please stay patient, as the situation should be resolved shortly!</p>
+                            </div>
+                            <div className="link-back-to-fron">
+                                <Link to={'/profile'}>
+                                    Back to the profile page
+                                </Link>
+                            </div>
+                        </div>
                     </div> : null}
                 </div> : null}
             </div>

@@ -33,7 +33,7 @@ export const uploadPhotoProfile = createAsyncThunk(
         try {
             const formData = new FormData()
             formData.append('file', file)
-            const res = await axios.post('http://localhost:3002' + '/user/photo', formData, {
+            const res = await axios.post('https://myvroom.space/api' + '/user/photo', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`

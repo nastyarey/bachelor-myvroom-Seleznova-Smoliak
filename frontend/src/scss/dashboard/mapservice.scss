@@ -94,7 +94,7 @@
       border-radius: 10px;
       background: #182F53;
       color: #fff;
-      height: 48px;
+      height: 50px;
       border: none;
       cursor: pointer;
     }
@@ -321,9 +321,12 @@
       border-radius: 10px;
       background: #182F53;
       color: #fff;
-      height: 48px;
+      height: 50px;
       border: none;
       cursor: pointer;
+      span {
+        font-size: 22px;
+      }
     }
   }
 
@@ -616,14 +619,14 @@
       width: 100%;
       background: #182F53;
       border-radius: 10px;
-      height: 70px;
+      height: 50px;
       border: none;
       cursor: pointer;
 
       span {
         color: #F3F5F9;
 
-        font-size: 25px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 700;
         line-height: 150%; /* 37.5px */
@@ -694,22 +697,25 @@
       border-radius: 10px;
       display: flex;
       align-items: center;
+      gap: 5px;
       justify-content: space-between;
       background: #F3F5F9;
 
-      svg {
+      .arrow-icons {
         width: 12px;
         height: 12px;
+        opacity: .3;
       }
 
       span {
-        color: #242121;
+        color: hsl(0, 0%, 50%);
         text-align: center;
-        font-size: 16px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
         letter-spacing: 1px;
+
 
       }
     }
