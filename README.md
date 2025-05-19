@@ -22,4 +22,4 @@ cd ../frontend
 
 yarn install
 
-yarn start:dev
+yarn run dev
