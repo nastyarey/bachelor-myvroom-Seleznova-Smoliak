@@ -18,7 +18,7 @@ yarn start:dev
 
 2 Запуск Front-end частини:
 
-cd ../frontend
+cd frontend
 
 yarn install
 
