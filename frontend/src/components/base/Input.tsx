@@ -11,7 +11,8 @@ export const Input = ({
                           name,
                           errorText,
                           error,
-                          value
+                          value,
+                          required
                       }: {
     label: string,
     placeholder: string,
@@ -23,7 +24,8 @@ export const Input = ({
     name?: string
     error?: boolean,
     errorText?: string
-    value?: string | null
+    value?: string | null,
+    required?: boolean
 }) => {
     const [typeState, setTypeState] = useState<string>(type);
     const handlerClick = () => {
@@ -42,7 +44,7 @@ export const Input = ({
     return (
         <div className="main-input-wrapper">
             <div className="container-label">
-                <label>{label}</label>
+                <label>{label} {required ? < span > * </span>:null} </label>
                 {link ? (<span className="link-text" onClick={handlerClick}>{link}</span>) : ''}
             </div>
             <div className="input-container">
@@ -67,5 +69,5 @@ export const Input = ({
 
 
         </div>
-    )
+)
 }

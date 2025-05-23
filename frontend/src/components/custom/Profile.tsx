@@ -2,7 +2,6 @@ import {Link, Outlet, useLocation} from "react-router-dom";
 
 export const Profile = () => {
     const location = useLocation()
-    console.log(location.pathname)
     return (
         <>
             <div className="profile-container">

@@ -9,6 +9,8 @@ import {AppDispatch} from "../../app/store.ts";
 import {registerUser} from "../../features/user/userSlice.ts";
 import {validatePassword} from "../../utils/validatePassword.ts";
 import {Notyf} from "notyf";
+import {validateEmail} from "../../utils/validateEmail.ts";
+import {validatePhone} from "../../utils/validatePhone.ts";
 
 type PasswordSecure = {
     password: string;
@@ -54,7 +56,16 @@ export const RegisterForm = () => {
     const dispatch = useDispatch<AppDispatch>();
     const registerUserHandler = async () => {
         const notyf = new Notyf()
-        setErrors({} as Errors)
+        setErrors({
+            first_name: '',
+            last_name: '',
+            email: '',
+            phone: '',
+            carNumber: '',
+            tenantName: '',
+            type: "",
+            password: ''
+        })
         try {
             if (!checked) {
                 notyf.error({
@@ -63,6 +74,45 @@ export const RegisterForm = () => {
                 return
             }
             const messageValidate = validatePassword(passwords.password, passwords.recPassword)
+            const emailValidate = validateEmail(dataRegister.email)
+            const phoneValidate = validatePhone(dataRegister.phone)
+            if (dataRegister.first_name === '' || dataRegister.last_name === '') {
+
+                setErrors({
+                    ...errors,
+                    first_name: "First name or Last name required",
+                    last_name: "First name or Last name required",
+                })
+                return
+            }
+            if (!emailValidate) {
+                setErrors({
+                    ...errors,
+                    email: 'Email is empty or in the wrong format'
+                })
+                return
+            }
+            if(dataRegister.type === 'tenant' && dataRegister.tenantName === "") {
+                setErrors({
+                    ...errors,
+                    tenantName: 'Please enter tenant name'
+                })
+                return
+            }
+            if (!phoneValidate) {
+                setErrors({
+                    ...errors,
+                    phone: "Phone number is empty or wrong format",
+                })
+                return
+            }
+            if (dataRegister.carNumber === '') {
+                setErrors({
+                    ...errors,
+                    carNumber: 'Car number is required',
+                })
+                return
+            }
             if (messageValidate) {
                 setErrors({
                     ...errors,
@@ -70,6 +120,7 @@ export const RegisterForm = () => {
                 })
                 return
             }
+
 
             await dispatch(registerUser({...dataRegister, password: passwords.password})).unwrap()
             notyf.success({
@@ -121,7 +172,7 @@ export const RegisterForm = () => {
                     </div>
                     <div className={`tenant-thumb thumb-main ${tenant ? 'select-thumb' : ''}`}
                          onClick={() => setTenant(true)}>
-                        <span>Organization</span>
+                        <span>Organization </span>
                         <div className="container-circle-thumb">
                             {tenant ? <div className="circle"></div> : ''}
                         </div>
@@ -131,28 +182,35 @@ export const RegisterForm = () => {
                     <div className="container-personal-info">
                         <div className="container-nfw-inp">
                             <Input name={'first_name'} label={'Surname'} placeholder={'Enter surname'}
-                                   onChange={handlerChangeUserData}/>
+                                   onChange={handlerChangeUserData} error={errors.first_name !== ''} required
+                                   errorText={errors.first_name !== '' ? errors.first_name : ''}/>
                         </div>
                         <div className="container-nfw-inp">
                             <Input name={'last_name'} label={'Name'} placeholder={'Enter name'}
-                                   onChange={handlerChangeUserData}/>
+                                   onChange={handlerChangeUserData} error={errors.last_name !== ''} required
+                                   errorText={errors.last_name !== '' ? errors.last_name : ''}/>
                         </div>
                     </div>
                     <div className="container-fw-input">
                         <Input name={'email'} label={'Email'} placeholder={'Enter email'}
-                               onChange={handlerChangeUserData}/>
+                               onChange={handlerChangeUserData} error={errors.email !== ''} required
+                               errorText={errors.email !== '' ? errors.email : ''}/>
                     </div>
                     {tenant ? (<div className="container-fw-input">
                         <Input name={'tenantName'} label={'Organization name'} placeholder={'Enter the organization'}
-                               onChange={handlerChangeUserData}/>
+                               onChange={handlerChangeUserData} error={errors.tenantName !== ''} required
+                               errorText={errors.tenantName !== '' ? errors.tenantName : ''}/>
                     </div>) : ""}
                     <div className="container-personal-info">
                         <div className="container-nfw-inp">
                             <Input name={'phone'} label={'Phone'} placeholder={'+380 (ХХ) ХХХ ХХ ХХ'}
-                                   onChange={handlerChangeUserData}/>
+                                   onChange={handlerChangeUserData} error={errors.phone !== ''} required
+                                   errorText={errors.phone !== '' ? errors.phone : ''}/>
                         </div>
                         <div className="container-nfw-inp">
                             <Input name={'carNumber'} label={'Car license plate'} placeholder={'XX0000XX'}
+                                   error={errors.carNumber !== ''}
+                                   errorText={errors.carNumber !== '' ? errors.carNumber : ''} required
                                    onChange={handlerChangeUserData}/>
                         </div>
                     </div>
@@ -160,11 +218,13 @@ export const RegisterForm = () => {
                         <div className="container-nfw-inp">
                             <Input name={'password'} label="Password" placeholder='6+ characters'
                                    type={'password'} onChange={handlerPasswordSeccure} error={errors.password !== ''}
+                                   required
                                    errorText={errors.password !== '' ? errors.password : ''}/>
                         </div>
                         <div className="container-nfw-inp">
                             <Input name={'recPassword'} label="Retype password" placeholder='6+ characters'
-                                   type={'password'} onChange={handlerPasswordSeccure} error={errors.password !== ''}/>
+                                   type={'password'} onChange={handlerPasswordSeccure} error={errors.password !== ''}
+                                   required/>
                         </div>
                     </div>
                     <div className="checkbox-container-wrapper">
