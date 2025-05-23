@@ -1,4 +1,7 @@
+import {useTranslation} from "react-i18next";
+
 export const NotificationsWeather = () => {
+    const {t} = useTranslation()
     return (
         <>
             <div className="notification-alert">
@@ -10,10 +13,10 @@ export const NotificationsWeather = () => {
                             fill="#FFDA00"/>
                     </svg>
                     <p>
-                        Weather Allert
+                        {t('app.weather-al')}
                     </p>
                 </div>
-                <span>Heavy rain expected in downtown area.Possible floading  on Zamartunivska Street 24</span>
+                <span>{t('app.weather-status')} Zamartunivska Street 24</span>
             </div>
         </>
     )

@@ -1,6 +1,7 @@
 import {Input} from "../base/Input.tsx";
 import {Button} from "../base/Button.tsx";
 import {ChangeEvent, useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export const ForgotPassword = () => {
     const [email, setEmail] = useState<string>("");
@@ -9,6 +10,7 @@ export const ForgotPassword = () => {
     const handlerInputEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value);
     }
+    const {t} = useTranslation()
     const handleSubmit = () => {
         setEmail('')
         setErrorMsg('')
@@ -30,14 +32,13 @@ export const ForgotPassword = () => {
         <>
             <div className="forgot-password-form">
                 <div className="title-container">
-                    <h1 className="h1">Forgot your password?</h1>
+                    <h1 className="h1">{t('app.forgot-pass')}</h1>
                 </div>
                 <div className="description-container">
-                    <p>Enter the email address associated with your profile and we will send you instructions for
-                        creating a new password.</p>
+                    <p>{t(`app.forgot-subtitle`)}</p>
                 </div>
                 <div className="container-inp-reset">
-                    <Input label={''} placeholder={'Enter your email address'} onChange={handlerInputEmail}
+                    <Input label={''} placeholder={t('app.email')} onChange={handlerInputEmail}
                            error={error}
                            errorText={errorMsg}/>
                 </div>

@@ -9,6 +9,7 @@ import {Timer} from "./Timer.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import Dropzone from 'react-dropzone'
 import {NotificationsWeather} from "./NotificationsWeather.tsx";
+import {useTranslation} from "react-i18next";
 
 
 export const ParkingService = () => {
@@ -32,7 +33,7 @@ export const ParkingService = () => {
     }
     const CustomPlaceholder = (props: any) => (
         <components.Placeholder {...props}>
-    <span style={{display: 'flex', alignItems: 'center',  gap: 80, fontSize: 20}}>
+    <span style={{display: 'flex', alignItems: 'center', gap: 12, fontSize: 20}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path
       d="M21.75 12C21.75 14.5859 20.7228 17.0658 18.8943 18.8943C17.0658 20.7228 14.5859 21.75 12 21.75C9.41414 21.75 6.93419 20.7228 5.10571 18.8943C3.27723 17.0658 2.25 14.5859 2.25 12C2.25 9.41414 3.27723 6.93419 5.10571 5.10571C6.93419 3.27723 9.41414 2.25 12 2.25C14.5859 2.25 17.0658 3.27723 18.8943 5.10571C20.7228 6.93419 21.75 9.41414 21.75 12ZM0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 8.8174 22.7357 5.76516 20.4853 3.51472C18.2348 1.26428 15.1826 0 12 0C8.8174 0 5.76516 1.26428 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12ZM10.875 5.625V12C10.875 12.375 11.0625 12.7266 11.3766 12.9375L15.8766 15.9375C16.3922 16.2844 17.0906 16.1437 17.4375 15.6234C17.7844 15.1031 17.6437 14.4094 17.1234 14.0625L13.125 11.4V5.625C13.125 5.00156 12.6234 4.5 12 4.5C11.3766 4.5 10.875 5.00156 10.875 5.625Z"
@@ -44,7 +45,7 @@ export const ParkingService = () => {
     )
     const CustomSingleValue = (props: any) => (
         <components.SingleValue {...props}>
-    <span style={{display: 'flex', alignItems: 'center',  gap: 80, fontSize: 20}}>
+    <span style={{display: 'flex', alignItems: 'center', gap: 12, fontSize: 20}}>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path
       d="M21.75 12C21.75 14.5859 20.7228 17.0658 18.8943 18.8943C17.0658 20.7228 14.5859 21.75 12 21.75C9.41414 21.75 6.93419 20.7228 5.10571 18.8943C3.27723 17.0658 2.25 14.5859 2.25 12C2.25 9.41414 3.27723 6.93419 5.10571 5.10571C6.93419 3.27723 9.41414 2.25 12 2.25C14.5859 2.25 17.0658 3.27723 18.8943 5.10571C20.7228 6.93419 21.75 9.41414 21.75 12ZM0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C5.76516 22.7357 8.8174 24 12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 8.8174 22.7357 5.76516 20.4853 3.51472C18.2348 1.26428 15.1826 0 12 0C8.8174 0 5.76516 1.26428 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12ZM10.875 5.625V12C10.875 12.375 11.0625 12.7266 11.3766 12.9375L15.8766 15.9375C16.3922 16.2844 17.0906 16.1437 17.4375 15.6234C17.7844 15.1031 17.6437 14.4094 17.1234 14.0625L13.125 11.4V5.625C13.125 5.00156 12.6234 4.5 12 4.5C11.3766 4.5 10.875 5.00156 10.875 5.625Z"
@@ -84,10 +85,11 @@ export const ParkingService = () => {
         setSelectSlot(null)
         setStep(step - 1)
     }
+    const {t} = useTranslation()
     return (
         <>
             <div ref={calendarRef} className="parking-service">
-                <NotificationsWeather />
+                <NotificationsWeather/>
                 <div className="navigation-container-parking">
                     <div className="container-flex-btn">
                         <div className={`btn-nav-parking ${selectType === 'parking' ? 'select-thumb-btn' : ''}`}
@@ -98,7 +100,7 @@ export const ParkingService = () => {
                                     d="M39.2358 0.946045H5.30298C2.74838 0.946045 0.675781 3.01864 0.675781 5.57324V39.506C0.675781 42.0606 2.74838 44.1332 5.30298 44.1332H39.2358C41.7903 44.1332 43.8629 42.0606 43.8629 39.506V5.57324C43.8629 3.01864 41.7903 0.946045 39.2358 0.946045ZM23.8118 28.7092H19.1846V33.3364C19.1846 34.1847 18.4905 34.8788 17.6422 34.8788H14.5574C13.7091 34.8788 13.015 34.1847 13.015 33.3364V11.7428C13.015 10.8945 13.7091 10.2004 14.5574 10.2004H23.8118C28.9113 10.2004 33.0662 14.3553 33.0662 19.4548C33.0662 24.5544 28.9113 28.7092 23.8118 28.7092ZM23.8118 16.37H19.1846V22.5396H23.8118C25.5084 22.5396 26.8966 21.1515 26.8966 19.4548C26.8966 17.7582 25.5084 16.37 23.8118 16.37Z"
                                     fill="#242121"/>
                             </svg>
-                            <span>Parking Spot</span>
+                            <span>{t('app.parking-spot')}</span>
                         </div>
                         <div className={`btn-nav-parking ${selectType === 'vehicle' ? 'select-thumb-btn' : ''}`}
                              onClick={() => setSelectType('vehicle')}>
@@ -108,7 +110,7 @@ export const ParkingService = () => {
                                     d="M45.3363 15.6346L42.0541 5.78788C41.5779 4.35426 40.6621 3.10716 39.4367 2.22376C38.2113 1.34036 36.7387 0.865604 35.2281 0.866946H13.3514C11.8408 0.865604 10.3682 1.34036 9.14277 2.22376C7.91738 3.10716 7.00156 4.35426 6.52542 5.78788L3.2432 15.6346C2.37039 15.9998 1.62503 16.6148 1.1008 17.4025C0.576567 18.1901 0.296874 19.1151 0.296875 20.0612V32.0577C0.296875 33.8283 1.26619 35.3591 2.69616 36.1916V41.6548C2.69616 42.2912 2.94894 42.9014 3.3989 43.3514C3.84885 43.8013 4.45912 44.0541 5.09545 44.0541H7.49474C8.13107 44.0541 8.74133 43.8013 9.19129 43.3514C9.64124 42.9014 9.89402 42.2912 9.89402 41.6548V36.8562H38.6855V41.6548C38.6855 42.2912 38.9383 42.9014 39.3882 43.3514C39.8382 43.8013 40.4484 44.0541 41.0848 44.0541H43.484C44.1204 44.0541 44.7306 43.8013 45.1806 43.3514C45.6306 42.9014 45.8833 42.2912 45.8833 41.6548V36.1916C46.6113 35.7742 47.2163 35.1723 47.6375 34.4465C48.0587 33.7208 48.2812 32.8968 48.2826 32.0577V20.0612C48.2826 19.1151 48.0029 18.1901 47.4787 17.4025C46.9545 16.6148 46.2091 15.9998 45.3363 15.6346ZM13.3514 5.66552H35.2257C36.2598 5.66552 37.1763 6.32292 37.5026 7.30663L40.1562 15.2627H8.42326L11.0745 7.30663C11.2337 6.82868 11.5393 6.41296 11.9479 6.1184C12.3566 5.82385 12.8476 5.6654 13.3514 5.66552ZM8.69438 29.6584C8.2216 29.6582 7.75349 29.565 7.31676 29.3839C6.88003 29.2028 6.48325 28.9375 6.14906 28.6031C5.81486 28.2687 5.54981 27.8717 5.36903 27.4349C5.18826 26.998 5.09529 26.5298 5.09545 26.0571C5.09561 25.5843 5.18888 25.1162 5.36995 24.6794C5.55102 24.2427 5.81634 23.8459 6.15075 23.5117C6.48517 23.1775 6.88213 22.9125 7.31898 22.7317C7.75583 22.5509 8.224 22.458 8.69678 22.4581C9.65159 22.4584 10.5672 22.838 11.2421 23.5134C11.917 24.1888 12.296 25.1046 12.2957 26.0595C12.2954 27.0143 11.9158 27.9299 11.2404 28.6048C10.565 29.2797 9.64919 29.6587 8.69438 29.6584ZM39.8851 29.6584C39.4123 29.6582 38.9442 29.565 38.5075 29.3839C38.0708 29.2028 37.674 28.9375 37.3398 28.6031C37.0056 28.2687 36.7405 27.8717 36.5598 27.4349C36.379 26.998 36.286 26.5298 36.2862 26.0571C36.2863 25.5843 36.3796 25.1162 36.5607 24.6794C36.7418 24.2427 37.0071 23.8459 37.3415 23.5117C37.6759 23.1775 38.0729 22.9125 38.5097 22.7317C38.9466 22.5509 39.4147 22.458 39.8875 22.4581C40.8423 22.4584 41.7579 22.838 42.4328 23.5134C43.1078 24.1888 43.4868 25.1046 43.4864 26.0595C43.4861 27.0143 43.1065 27.9299 42.4311 28.6048C41.7558 29.2797 40.8399 29.6587 39.8851 29.6584Z"
                                     fill="white"/>
                             </svg>
-                            <span> Blocked vehicle</span>
+                            <span>{t(`app.blocked`)}</span>
                         </div>
                     </div>
                 </div>
@@ -117,10 +119,10 @@ export const ParkingService = () => {
                     {step === 1 ? <>
                         <div className="container-form-order-parking">
                             <div className="input-container">
-                                <input type="text" name={'city'} placeholder={'What city are you in ?'}/>
+                                <input type="text" name={'city'} placeholder={t('app.city-inp')}/>
                             </div>
                             <div className="input-container">
-                                <input type="text" name={'street'} placeholder={'Where would you like to park ?'}/>
+                                <input type="text" name={'street'} placeholder={t('app.park-search')}/>
                             </div>
                             <div className="container-select-date">
 
@@ -131,8 +133,9 @@ export const ParkingService = () => {
                                             d="M23.04 2.16H18V0.24C18 0.108 17.892 0 17.76 0H16.08C15.948 0 15.84 0.108 15.84 0.24V2.16H8.16V0.24C8.16 0.108 8.052 0 7.92 0H6.24C6.108 0 6 0.108 6 0.24V2.16H0.96C0.429 2.16 0 2.589 0 3.12V23.04C0 23.571 0.429 24 0.96 24H23.04C23.571 24 24 23.571 24 23.04V3.12C24 2.589 23.571 2.16 23.04 2.16ZM21.84 21.84H2.16V10.44H21.84V21.84ZM2.16 8.4V4.32H6V5.76C6 5.892 6.108 6 6.24 6H7.92C8.052 6 8.16 5.892 8.16 5.76V4.32H15.84V5.76C15.84 5.892 15.948 6 16.08 6H17.76C17.892 6 18 5.892 18 5.76V4.32H21.84V8.4H2.16Z"
                                             fill="#626162"/>
                                     </svg>
-                                    {date ? <span>{format(date[0], 'dd/MM/yyyy')}</span> : <span>Choose date</span>}
-                                    <svg  className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
+                                    {date ? <span>{format(date[0], 'dd/MM/yyyy')}</span> : <span>{t(`app.date`)}</span>}
+                                    <svg className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="15" viewBox="0 0 24 15"
                                          fill="none">
                                         <path d="M21.18 0L12 9.27126L2.82 0L0 2.85425L12 15L24 2.85425L21.18 0Z"
                                               fill="#7E7D7D"/>
@@ -145,8 +148,9 @@ export const ParkingService = () => {
                                             d="M23.04 2.16H18V0.24C18 0.108 17.892 0 17.76 0H16.08C15.948 0 15.84 0.108 15.84 0.24V2.16H8.16V0.24C8.16 0.108 8.052 0 7.92 0H6.24C6.108 0 6 0.108 6 0.24V2.16H0.96C0.429 2.16 0 2.589 0 3.12V23.04C0 23.571 0.429 24 0.96 24H23.04C23.571 24 24 23.571 24 23.04V3.12C24 2.589 23.571 2.16 23.04 2.16ZM21.84 21.84H2.16V10.44H21.84V21.84ZM2.16 8.4V4.32H6V5.76C6 5.892 6.108 6 6.24 6H7.92C8.052 6 8.16 5.892 8.16 5.76V4.32H15.84V5.76C15.84 5.892 15.948 6 16.08 6H17.76C17.892 6 18 5.892 18 5.76V4.32H21.84V8.4H2.16Z"
                                             fill="#626162"/>
                                     </svg>
-                                    {date ? <span>{format(date[1], 'dd/MM/yyyy')}</span> : <span>Choose date</span>}
-                                    <svg className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24" height="15" viewBox="0 0 24 15"
+                                    {date ? <span>{format(date[0], 'dd/MM/yyyy')}</span> : <span>{t(`app.date`)}</span>}
+                                    <svg className={'arrow-icons'} xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="15" viewBox="0 0 24 15"
                                          fill="none">
                                         <path d="M21.18 0L12 9.27126L2.82 0L0 2.85425L12 15L24 2.85425L21.18 0Z"
                                               fill="#7E7D7D"/>
@@ -163,7 +167,7 @@ export const ParkingService = () => {
                                 <div className="select-time-container">
                                     <Select className={'custom-select'} menuPortalTarget={document.body}
                                             menuPosition="fixed" options={dateTimeOptions} value={selectTime}
-                                            placeholder={'Choose time'}
+                                            placeholder={t('app.time-c')}
                                             onChange={setSelectTime} styles={{
                                         control: (base: any): any => ({
                                                 ...base,
@@ -171,7 +175,7 @@ export const ParkingService = () => {
                                                 border: 'none',
                                                 borderRadius: '10px',
                                                 display: 'flex',
-                                                justifyContent:'space-between',
+                                                justifyContent: 'space-between',
                                                 minHeight: '51px',
                                                 boxShadow: 'none',
                                                 '&:hover': {
@@ -196,7 +200,7 @@ export const ParkingService = () => {
 
                                     <Select className={'custom-select'} menuPortalTarget={document.body}
                                             menuPosition="fixed" options={dateTimeOptions} value={selectToTime}
-                                            onChange={setSelectToTime} placeholder={'Choose time'} styles={{
+                                            onChange={setSelectToTime} placeholder={t('app.time-c')} styles={{
                                         control: (base: any): any => ({
                                                 ...base,
                                                 backgroundColor: '#F3F5F9',
@@ -225,13 +229,13 @@ export const ParkingService = () => {
                             </div>
                             <div className="container-btn">
                                 <button onClick={() => handlerStep('next')}>
-                                    <span>Search free parking spot</span>
+                                    <span>{t('app.search-park')}</span>
                                 </button>
                             </div>
                         </div>
                         <div className="containe-wrapper-nearby">
                             <h3 className="h3">
-                                Nearby parking spots
+                                {t('app.nerd-slots')}
                             </h3>
                             <div className="item-container-nearby">
                                 <div className="container-content-img">
@@ -1544,14 +1548,14 @@ export const ParkingService = () => {
                         </div>
                         {selectSlot ? <div className="container-btn">
                             <button onClick={() => handlerStep('next')}>
-                                <span>Park at slot {selectSlot}</span>
+                                <span>{t('app.park-slot')} {selectSlot}</span>
                             </button>
                         </div> : null}
                     </div> : null}
                     {step === 3 ? <div className={'container-form-order-parking'}>
                         <div className="timer-container">
                             <div className="title-timer">
-                                <p>Expected time of arrival </p>
+                                <p>{t('app.exp-time-arr')} </p>
                             </div>
                             <Timer/>
                         </div>
@@ -1560,28 +1564,28 @@ export const ParkingService = () => {
                                 <img src="/img/imgpark-1.png" alt=""/>
                             </div>
                             <div className="content-container">
-                                <p><span>Place of arrival:</span> Citi Centre</p>
-                                <p><span>From:</span> {selectTime?.value ? selectTime.value : ''}</p>
-                                <p><span>To:</span> {selectToTime?.value ? selectToTime.value : ''}</p>
+                                <p><span>{t('app.place-arr')}:</span> Citi Centre</p>
+                                <p><span>{t(`app.from`)}:</span> {selectTime?.value ? selectTime.value : ''}</p>
+                                <p><span>{t(`app.to`)}:</span> {selectToTime?.value ? selectToTime.value : ''}</p>
                             </div>
 
                         </div>
                         <div className="container-check-wrapper">
                             <div className="line-header-container">
-                                <p>Your parking slot:</p>
-                                <p>Price</p>
+                                <p>{t('app.y-park-slot')}:</p>
+                                <p>{t(`app.price-help`)}</p>
                             </div>
                             <div className="content-body-container">
-                                <p>Park as slot {selectSlot}</p>
+                                <p>{t('app.park-slot')} {selectSlot}</p>
                                 <p>35,00 ₴</p>
                             </div>
                         </div>
                         <div className="btn-group">
                             <button onClick={() => handlerStep('reset')}>
-                                <span>Cancel</span>
+                                <span>{t(`app.cancel`)}</span>
                             </button>
                             <button onClick={() => handlerStep('next')}>
-                                <span>Go to payment</span>
+                                <span>{t('app.payment')}</span>
                             </button>
                         </div>
                     </div> : null}
@@ -1597,7 +1601,7 @@ export const ParkingService = () => {
                                                 d="M17.5014 1H1.61116C1.27311 1 1 1.27311 1 1.61116V4.66697H18.1125V1.61116C18.1125 1.27311 17.8394 1 17.5014 1ZM1 13.8344C1 14.1724 1.27311 14.4455 1.61116 14.4455H17.5014C17.8394 14.4455 18.1125 14.1724 18.1125 13.8344V6.34766H1V13.8344ZM12.0582 10.3202C12.0582 10.2362 12.127 10.1674 12.211 10.1674H15.3623C15.4463 10.1674 15.5151 10.2362 15.5151 10.3202V11.6953C15.5151 11.7794 15.4463 11.8481 15.3623 11.8481H12.211C12.127 11.8481 12.0582 11.7794 12.0582 11.6953V10.3202Z"
                                                 fill="#F3F5F9" stroke="black" strokeWidth="0.870513"/>
                                         </svg>
-                                        <p>Registered cards</p>
+                                        <p>{t('app.cards')}</p>
                                     </div>
                                     <div className="content-table">
                                         <div className="item-table">
@@ -1609,10 +1613,10 @@ export const ParkingService = () => {
                                                           strokeWidth="3" strokeLinecap="round"
                                                           strokeLinejoin="round"/>
                                                 </svg>
-                                                <p>BankName</p>
+                                                <p>{t('app.bank')}</p>
                                                 <p>CVV</p>
-                                                <p>Name</p>
-                                                <p>Date</p>
+                                                <p>{t('app.name')}</p>
+                                                <p>{t('app.date-card')}</p>
                                             </div>
                                             <div className="head-table body-table">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="15"
@@ -1637,7 +1641,7 @@ export const ParkingService = () => {
                                             d="M12.5 0.5C5.59495 0.5 0 6.09495 0 13C0 19.905 5.59495 25.5 12.5 25.5C19.405 25.5 25 19.905 25 13C25 6.09495 19.405 0.5 12.5 0.5ZM17.9387 13.9615H13.4615V18.4387C13.4615 18.9675 13.0288 19.4002 12.5 19.4002C12.2356 19.4002 11.9952 19.2921 11.8209 19.1178C11.6466 18.9435 11.5385 18.7031 11.5385 18.4387V13.9615H7.0613C6.79688 13.9615 6.55649 13.8534 6.38221 13.6791C6.20793 13.5048 6.09976 13.2644 6.09976 13C6.09976 12.4712 6.53245 12.0385 7.0613 12.0385H11.5385V7.5613C11.5385 7.03245 11.9712 6.59976 12.5 6.59976C13.0288 6.59976 13.4615 7.03245 13.4615 7.5613V12.0385H17.9387C18.4675 12.0385 18.9002 12.4712 18.9002 13C18.9002 13.5288 18.4675 13.9615 17.9387 13.9615Z"
                                             fill="#D2D2D2"/>
                                     </svg>
-                                    <p>Add new card</p>
+                                    <p>{t('app.add-new-card')}</p>
                                 </div>
 
                             </div>
@@ -1651,13 +1655,13 @@ export const ParkingService = () => {
                                                 d="M5 3V2.25C4.58579 2.25 4.25 2.58579 4.25 3H5ZM19 21V21.75C19.4142 21.75 19.75 21.4142 19.75 21H19ZM5 21H4.25C4.25 21.4142 4.58579 21.75 5 21.75V21ZM14 3L14.5303 2.46967C14.3897 2.32902 14.1989 2.25 14 2.25V3ZM19 8H19.75C19.75 7.80109 19.671 7.61032 19.5303 7.46967L19 8ZM8 16.25C7.58579 16.25 7.25 16.5858 7.25 17C7.25 17.4142 7.58579 17.75 8 17.75V16.25ZM16 17.75C16.4142 17.75 16.75 17.4142 16.75 17C16.75 16.5858 16.4142 16.25 16 16.25V17.75ZM8 12.25C7.58579 12.25 7.25 12.5858 7.25 13C7.25 13.4142 7.58579 13.75 8 13.75V12.25ZM14 13.75C14.4142 13.75 14.75 13.4142 14.75 13C14.75 12.5858 14.4142 12.25 14 12.25V13.75ZM19 20.25H5V21.75H19V20.25ZM5.75 21V3H4.25V21H5.75ZM5 3.75H14V2.25H5V3.75ZM18.25 8V21H19.75V8H18.25ZM13.4697 3.53033L18.4697 8.53033L19.5303 7.46967L14.5303 2.46967L13.4697 3.53033ZM12.25 3V7H13.75V3H12.25ZM15 9.75H19V8.25H15V9.75ZM12.25 7C12.25 8.51878 13.4812 9.75 15 9.75V8.25C14.3096 8.25 13.75 7.69036 13.75 7H12.25ZM8 17.75H16V16.25H8V17.75ZM8 13.75H14V12.25H8V13.75Z"
                                                 fill="black"/>
                                         </svg>
-                                        <span>Your shtrihcode</span>
+                                        <span>{t(`app.qr-code`)}</span>
                                     </div>
                                     <div className="content-table-check">
                                         <div className="item-title-container title-container-wrap">
-                                            <p>Place name</p>
-                                            <p>Slot</p>
-                                            <p>Price</p>
+                                            <p>{t('app.place-name')}</p>
+                                            <p>{t('app.slot')}</p>
+                                            <p>{t('app.price-help')}</p>
                                         </div>
                                         <div className="item-title-container">
                                             <p>Zamartunivska str 19</p>
@@ -1666,7 +1670,7 @@ export const ParkingService = () => {
                                         </div>
                                     </div>
                                     <div className="container-total-price">
-                                        <p>Total: 35,00 ₴</p>
+                                        <p>{t('app.total')}: 35,00 ₴</p>
                                     </div>
                                 </div>
                                 <button onClick={() => handlerStep('next')}>
@@ -1676,10 +1680,10 @@ export const ParkingService = () => {
                         </div>
                         <div className="btn-group">
                             <button onClick={() => handlerStep('reset')}>
-                                <span>Cancel</span>
+                                <span>{t(`app.cancel`)}</span>
                             </button>
                             <button onClick={() => handlerStep('next')}>
-                                <span>Pay by card</span>
+                                <span>{t(`app.pay-card`)}</span>
                             </button>
                         </div>
                     </div> : null}
@@ -1688,17 +1692,17 @@ export const ParkingService = () => {
                             <img src="/img/qr-code.png" alt=""/>
                         </div>
 
-                        <button onClick={() => navigate('/profile')}>Go to personal cabinet</button>
+                        <button onClick={() => navigate('/profile')}>{t('app.profile')}</button>
                     </div> : null}
                 </div> : null}
                 {selectType === 'vehicle' ? <div className={'container-vehicle'}>
                     <div className="container-title">
-                        <h3 className="h3">Report blocked vehicle</h3>
-                        <p className={`p-title`}>Upload a photo of a blocked car</p>
+                        <h3 className="h3">{t('app.title-report')}</h3>
+                        <p className={`p-title`}>{t('app.subtitle-report')}</p>
                     </div>
                     <div className="drop-zone-container">
                         {!files ? <Dropzone accept={{'image/*': []}} maxFiles={1}
-                                           onDrop={acceptedFiles => handleDrop(acceptedFiles)}>
+                                            onDrop={acceptedFiles => handleDrop(acceptedFiles)}>
                             {({getRootProps, getInputProps}) => (
                                 <div {...getRootProps()} className={'dropzone-container'}>
                                     <input {...getInputProps()} />
@@ -1712,19 +1716,19 @@ export const ParkingService = () => {
                                                 d="M101.442 75.0345C101.442 89.619 89.619 101.442 75.0345 101.442C60.45 101.442 48.627 89.619 48.627 75.0345C48.627 60.45 60.45 48.627 75.0345 48.627C89.619 48.627 101.442 60.45 101.442 75.0345Z"
                                                 stroke="#9FA3AE" stroke-width="14.3645" stroke-linejoin="round"/>
                                         </svg>
-                                        <p>Click to upload the photo</p>
+                                        <p>{t('app.click-upload')}</p>
                                     </div>
                                 </div>
                             )}
                         </Dropzone> : null}
 
                         {files ? <div className={'container-image-file'} onClick={handleSecondClick}>
-                            <img  src={URL.createObjectURL(files)}
-                                  alt={files.name} />
+                            <img src={URL.createObjectURL(files)}
+                                 alt={files.name}/>
                         </div> : null}
                         <button className="create-req-for-user" onClick={() => setNotification(true)}>
                            <span>
-                                Report blocked vehicle
+                               {t('app.btn-report')}
                            </span>
                         </button>
                     </div>
@@ -1732,17 +1736,17 @@ export const ParkingService = () => {
                         <div className="bg-lock"></div>
                         <div className="content-wrapper-pop-up">
                             <div className="title-container">
-                                <p>Notification</p>
+                                <p>{t('app.title-pop')}</p>
                             </div>
                             <div className="title-btn-container">
-                                <p>Obstructing Vehicle Owner</p>
+                                <p>{t('app.subtitle-pop')}</p>
                             </div>
                             <div className="text-area-cont">
-                                <p>Thank you for reporting the obstruction. We have notified the vehicle owner, and they have been requested to move their car as soon as possible. Please stay patient, as the situation should be resolved shortly!</p>
+                                <p>{t(`app.text-pop`)}</p>
                             </div>
                             <div className="link-back-to-fron">
                                 <Link to={'/profile'}>
-                                    Back to the profile page
+                                    {t('app.back-profile')}
                                 </Link>
                             </div>
                         </div>

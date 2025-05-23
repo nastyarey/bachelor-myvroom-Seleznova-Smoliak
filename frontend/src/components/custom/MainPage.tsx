@@ -1,9 +1,11 @@
 import {useState} from "react";
 import {ParkingService} from "./ParkingService.tsx";
 import {EmergencyService} from "./EmergencyService.tsx";
+import {useTranslation} from "react-i18next";
 
 export const MainPage = () => {
     const [selectType, setSelectType] = useState<'parking' | 'emergency'>('emergency')
+    const {t} = useTranslation()
     return (
         <>
             <div className="main-page-container">
@@ -12,12 +14,12 @@ export const MainPage = () => {
                         <div
                             className={`btn-nav-main btn-emergency-service ${selectType === 'emergency' ? 'selected-nav' : ''}`}
                             onClick={() => setSelectType('emergency')}>
-                            <span>Emergency Services</span>
+                            <span>{t(`app.emergency`)}</span>
                         </div>
                         <div
                             className={`btn-nav-main btn-parking-service ${selectType === 'parking' ? 'selected-nav' : ''}`}
                             onClick={() => setSelectType('parking')}>
-                            <span>Parking Service</span>
+                            <span>{t('app.parking')}</span>
                         </div>
                     </div>
                 </div>

@@ -1,16 +1,16 @@
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const PaymentInformation = () => {
+    const {t} = useTranslation();
     return (
         <>
             <div className="container-profile-information">
                 <div className="navigation-profile">
                     <Link to={'/profile'}
-                          className={`navigation-link-profile ${location.pathname === '/profile' ? 'active-link' : ''} `}>Profile
-                        settings</Link>
+                          className={`navigation-link-profile ${location.pathname === '/profile' ? 'active-link' : ''} `}>{t('app.profile-settings')}</Link>
                     <Link to={'/profile/payment'}
-                          className={`navigation-link-profile ${location.pathname === '/profile/payment' ? 'active-link' : ''} `}>Payment
-                        settings</Link>
+                          className={`navigation-link-profile ${location.pathname === '/profile/payment' ? 'active-link' : ''} `}>{t(`app.payment-settings`)}</Link>
                 </div>
                 <div className="payment-information">
                     <div className="cart-container">

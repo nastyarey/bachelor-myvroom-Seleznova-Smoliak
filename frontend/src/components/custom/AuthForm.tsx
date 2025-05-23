@@ -8,6 +8,7 @@ import * as React from "react";
 import {useState} from "react";
 import {AppDispatch} from "../../app/store.ts";
 import {useAppSelector} from "../../hooks/hook.ts";
+import {useTranslation} from "react-i18next";
 
 type UserLogin = {
     email: string;
@@ -18,6 +19,7 @@ export const AuthForm = () => {
         email: '',
         password: ''
     })
+    const {t} = useTranslation()
     const [error, setError] = useState<string | null>(null)
     const navigate = useNavigate();
     const token = useAppSelector(state => state.user.token)
@@ -51,12 +53,12 @@ export const AuthForm = () => {
                 </div>
                 <div className="content-form-auth">
                     <div className="main-input-auth">
-                        <Input name={'email'} label="Email" placeholder="Email" disabled={false}
+                        <Input name={'email'} label={t('auth.email')} placeholder={t('auth.email')} disabled={false}
                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleDataChange(e)}/>
                     </div>
                     <div className="main-input-auth">
-                        <Input name={'password'} label="Password" placeholder='Password' disabled={false}
-                               link='Forgot password'
+                        <Input name={'password'} label={t('auth.password')} placeholder={t('auth.password')} disabled={false}
+                               link={t('auth.forgot-pass' )+ '?'}
                                type={'password'}
                                linkClick={linkRefForgotPassword}
                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleDataChange(e)}
@@ -67,16 +69,16 @@ export const AuthForm = () => {
 
                 </div>
                 <div className="container-btn">
-                    <Button text="Log in" onClick={handleLogin}/>
+                    <Button text={t('auth.login')} onClick={handleLogin}/>
                 </div>
                 <div className="or-container">
                     <div className="line-wrapper"></div>
-                    <span>or</span>
+                    <span>{t('auth.prefix')}</span>
                     <div className="line-wrapper"></div>
                 </div>
                 <div className="btn-auth-container">
                     <div className="register-btn">
-                        <Link to="register">I don’t have a profile</Link>
+                        <Link to="register">{t('auth.register-btn')}</Link>
                     </div>
                 </div>
             </div>

@@ -3,10 +3,12 @@ import {AppDispatch, RootState} from "../../app/store.ts";
 import {useEffect} from "react";
 import {getNotification} from "../../features/user/notificationSlice.ts";
 import {NotificationProfile} from "./NotificationProfile.tsx";
+import {useTranslation} from "react-i18next";
 
 export const NotificationsProfile = () => {
     const dispatch = useDispatch<AppDispatch>()
     const {items, firstFethced} = useSelector((state: RootState) => state.notification)
+    const {t} = useTranslation()
     useEffect(() => {
         if (!firstFethced) {
             dispatch(getNotification()).unwrap
@@ -16,7 +18,7 @@ export const NotificationsProfile = () => {
         <>
             <div className="notifications-profile">
                 <div className="top-line-notyf">
-                    <h3 className="h3">Notification</h3>
+                    <h3 className="h3">{t('app.notyf')}</h3>
                     
                 </div>
                 <div className="content-notification">

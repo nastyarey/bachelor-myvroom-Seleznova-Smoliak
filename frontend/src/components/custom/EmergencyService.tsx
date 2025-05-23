@@ -3,6 +3,7 @@ import {useState} from "react";
 import {TimerService} from "./TimerService.tsx";
 import {useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
+import {useTranslation} from "react-i18next";
 
 export const EmergencyService = () => {
     const [step, setStep] = useState<number>(1);
@@ -26,6 +27,7 @@ export const EmergencyService = () => {
     const finishTimerHandler = () => {
         setFinishTimer(true)
     }
+    const {t} = useTranslation()
     return (
         <>
             {userData && userData.tenantName !== '' ? <div className="emergency-service tenant-emergency">
@@ -33,7 +35,7 @@ export const EmergencyService = () => {
                     <div className="item-slider">
                         <div className="title-container-slider">
                             <p>Richard Hammond</p>
-                            <span>10:45 AM</span>
+                            <span>10:45</span>
                         </div>
                         <div className="str-wrapper">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="28" viewBox="0 0 14 28"
@@ -54,8 +56,8 @@ export const EmergencyService = () => {
                             <p>ETA: 15 min</p>
                         </div>
                         <div className="btn-group">
-                            <button className={`btn-decline`}>Decline</button>
-                            <button className={`btn-accept`}>Accept</button>
+                            <button className={`btn-decline`}>{t('app.decline')}</button>
+                            <button className={`btn-accept`}>{t('app.accept')}</button>
                         </div>
                     </div>
                     <div className="item-slider">
@@ -122,7 +124,7 @@ export const EmergencyService = () => {
                                 d="M32.8407 27.2245L17.5201 0.591837C17.2918 0.196046 16.8977 0 16.5 0C16.1023 0 15.7045 0.196046 15.4799 0.591837L0.159295 27.2245C-0.293693 28.0161 0.273462 29 1.17944 29H31.8206C32.7265 29 33.2937 28.0161 32.8407 27.2245ZM15.3215 10.949C15.3215 10.7862 15.4541 10.6531 15.6161 10.6531H17.3839C17.5459 10.6531 17.6785 10.7862 17.6785 10.949V17.7551C17.6785 17.9179 17.5459 18.051 17.3839 18.051H15.6161C15.4541 18.051 15.3215 17.9179 15.3215 17.7551V10.949ZM16.5 23.9694C16.0374 23.9599 15.597 23.7687 15.2731 23.4367C14.9493 23.1048 14.768 22.6586 14.768 22.1939C14.768 21.7292 14.9493 21.283 15.2731 20.951C15.597 20.6191 16.0374 20.4279 16.5 20.4184C16.9626 20.4279 17.403 20.6191 17.7269 20.951C18.0507 21.283 18.232 21.7292 18.232 22.1939C18.232 22.6586 18.0507 23.1048 17.7269 23.4367C17.403 23.7687 16.9626 23.9599 16.5 23.9694Z"
                                 fill="#A03026"/>
                         </svg>
-                        <h3 className="h3">Security Warning</h3>
+                        <h3 className="h3">{t('app.secc-warning')}</h3>
                     </div>
                     <div className="container-notyf-error-message">
                         <div className="item-notyf-error-message">
@@ -136,16 +138,16 @@ export const EmergencyService = () => {
                         {step === 1 ? <div className="container-form-order-parking">
                             <div className="container-emergency-services">
                                 <div className="input-container">
-                                    <input name={'address'} placeholder={'Evacuate a car from '}/>
+                                    <input name={'address'} placeholder={t('app.ev-from')}/>
                                     <button>
-                                        <span>Select on the map</span>
+                                        <span>{t('app.select-map')}</span>
                                     </button>
 
                                 </div>
                                 <div className="input-container">
-                                    <input name={'address'} placeholder={'Evacuate a car to'}/>
+                                    <input name={'address'} placeholder={t('app.ev-to')}/>
                                     <button>
-                                        <span>Select on the map</span>
+                                        <span>{t('app.select-map')}</span>
                                     </button>
                                 </div>
                                 <div className="container-service-wrapper">
@@ -156,12 +158,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-1.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-cart')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t(`app.price`)}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 2 ? 'active-service' : ''}`}
@@ -171,12 +173,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-2.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-cart')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t(`app.price`)}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 3 ? 'active-service' : ''}`}
@@ -186,12 +188,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-3.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-cart')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t(`app.price`)}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 4 ? 'active-service' : ''}`}
@@ -201,28 +203,28 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-1.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-cart')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t(`app.price`)}</span>
                                         </div>
                                     </div>
 
                                 </div>
                                 <button className={`main-btn-emergency`} onClick={() => handlerStep('next')}>
-                                    <span>Order tow track</span>
+                                    <span>{t('app.order-track')}</span>
                                 </button>
                             </div>
                         </div> : null}
                         {step === 2 ? <div className={'container-form-order-parking'}>
                             <div className="timer-container">
                                 <div className="title-timer">
-                                    <p>Expected time of arrival </p>
+                                    <p>{t('exp-time-ar')} </p>
                                 </div>
                                 {finishTimer ? <div className="timer-finish">
-                                    <span>TOW TRUCK ARRIVED</span>
+                                    <span>{t('app.track-arr')}</span>
                                 </div> : <TimerService start={startTimer} onFinish={finishTimerHandler}/>}
 
 
@@ -232,16 +234,16 @@ export const EmergencyService = () => {
                                     <img src="/img/imgtrack-1.png" alt=""/>
                                 </div>
                                 <div className="content-container">
-                                    <p><span>Tow truck service:</span>Car Help</p>
-                                    <p><span>Price:</span> 550₴</p>
-                                    <p><span>Driver:</span> Antonio Galucho</p>
+                                    <p><span>{t('app.tow-service')}:</span>{t('app.car-help')}</p>
+                                    <p><span>{t('app.price-help')}:</span> 550₴</p>
+                                    <p><span>{t('app.driver')}:</span> Antonio Galucho</p>
                                 </div>
 
                             </div>
                             <div className="container-check-wrapper">
                                 <div className="line-header-container">
-                                    <p>Your car:</p>
-                                    <p>Tow truck tons:</p>
+                                    <p>{t('app.y-car')}:</p>
+                                    <p>{t('tow-y-track')}:</p>
                                 </div>
                                 <div className="content-body-container">
                                     <p>Skoda Superb</p>
@@ -250,10 +252,10 @@ export const EmergencyService = () => {
                             </div>
                             <div className="btn-group">
                                 <button onClick={() => handlerStep('reset')}>
-                                    <span>Cancel</span>
+                                    <span>{t('app.cancel')}</span>
                                 </button>
                                 <button onClick={() => setStartTimer(true)}>
-                                    <span>{startTimer ? 'Follow map' : 'Continue'}</span>
+                                    <span>{startTimer ?  t('app.follow-map') : t('app.continue')}</span>
                                 </button>
                             </div>
                         </div> : null}
@@ -263,8 +265,8 @@ export const EmergencyService = () => {
                 </div>
             </div> : <div className="emergency-service">
                 <div className="title-container">
-                    <h3 className="h3">Emergency Tow Truck Services</h3>
-                    <p>Get immediate assistance for your vehicle</p>
+                    <h3 className="h3">{t('app.title-emrg')}</h3>
+                    <p>{t('app.subtitle-emrg')}</p>
                 </div>
                 <div className="map-containeer">
                     <MapContainer/>
@@ -272,16 +274,16 @@ export const EmergencyService = () => {
                         {step === 1 ? <div className="container-form-order-parking">
                             <div className="container-emergency-services">
                                 <div className="input-container">
-                                    <input name={'address'} placeholder={'Evacuate a car from '}/>
+                                    <input name={'address'} placeholder={t('app.ev-from')}/>
                                     <button>
-                                        <span>Select on the map</span>
+                                        <span>{t('app.select-map')}</span>
                                     </button>
 
                                 </div>
                                 <div className="input-container">
-                                    <input name={'address'} placeholder={'Evacuate a car to'}/>
+                                    <input name={'address'} placeholder={t('app.ev-to')}/>
                                     <button>
-                                        <span>Select on the map</span>
+                                        <span>{t('app.select-map')}</span>
                                     </button>
                                 </div>
                                 <div className="container-service-wrapper">
@@ -292,12 +294,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-1.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-car')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t('app.price')}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 2 ? 'active-service' : ''}`}
@@ -307,12 +309,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-2.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-car')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t('app.price')}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 3 ? 'active-service' : ''}`}
@@ -322,12 +324,12 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-3.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-car')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t('app.price')}</span>
                                         </div>
                                     </div>
                                     <div className={`item-service ${selectService === 4 ? 'active-service' : ''}`}
@@ -337,28 +339,28 @@ export const EmergencyService = () => {
                                                 <img src="/img/imgtrack-1.png" alt="11"/>
                                             </div>
                                             <div className="text-content">
-                                                <p>Super Car</p>
-                                                <span>10 min</span>
+                                                <p>{t('app.super-car')}</p>
+                                                <span>{t('app.time')}</span>
                                             </div>
                                         </div>
                                         <div className="price-container">
-                                            <span>1800 ₴</span>
+                                            <span>{t('app.price')}</span>
                                         </div>
                                     </div>
 
                                 </div>
                                 <button className={`main-btn-emergency`} onClick={() => handlerStep('next')}>
-                                    <span>Order tow track</span>
+                                    <span>{t('app.order-track')}</span>
                                 </button>
                             </div>
                         </div> : null}
                         {step === 2 ? <div className={'container-form-order-parking'}>
                             <div className="timer-container">
                                 <div className="title-timer">
-                                    <p>Expected time of arrival </p>
+                                    <p>{t('app.exp-time-ar')} </p>
                                 </div>
                                 {finishTimer ? <div className="timer-finish">
-                                    <span>TOW TRUCK ARRIVED</span>
+                                    <span>{t('app.track-arr')}</span>
                                 </div> : <TimerService start={startTimer} onFinish={finishTimerHandler}/>}
 
 
@@ -368,16 +370,15 @@ export const EmergencyService = () => {
                                     <img src="/img/imgtrack-1.png" alt=""/>
                                 </div>
                                 <div className="content-container">
-                                    <p><span>Tow truck service:</span>Car Help</p>
-                                    <p><span>Price:</span> 550₴</p>
-                                    <p><span>Driver:</span> Antonio Galucho</p>
+                                    <p><span>{t('app.tow-service')}:</span>{t('app.car-help')}</p>
+                                    <p><span>{t('app.price-help')}:</span> {t('app.price')}</p>
+                                    <p><span>{t('app.driver')}:</span> Antonio Galucho</p>
                                 </div>
-
                             </div>
                             <div className="container-check-wrapper">
                                 <div className="line-header-container">
-                                    <p>Your car:</p>
-                                    <p>Tow truck tons:</p>
+                                    <p>{t('app.y-car')}:</p>
+                                    <p>{t('app.tow-y-track')}:</p>
                                 </div>
                                 <div className="content-body-container">
                                     <p>Skoda Superb</p>
@@ -386,15 +387,13 @@ export const EmergencyService = () => {
                             </div>
                             <div className="btn-group">
                                 <button onClick={() => handlerStep('reset')}>
-                                    <span>Cancel</span>
+                                    <span>{t('app.cancel')}</span>
                                 </button>
                                 <button onClick={() => setStartTimer(true)}>
-                                    <span>{startTimer ? 'Follow map' : 'Continue'}</span>
+                                    <span>{startTimer ? t('app.follow-map') : t('app.continue')}</span>
                                 </button>
                             </div>
                         </div> : null}
-
-
                     </div>
                 </div>
             </div>}

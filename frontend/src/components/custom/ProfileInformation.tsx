@@ -7,6 +7,7 @@ import {updateUser, uploadPhotoProfile} from "../../features/user/userSlice.ts";
 import {Input} from "../base/Input.tsx";
 import {userData} from "../../types/user/userdata.ts";
 import {Notyf} from "notyf";
+import {useTranslation} from "react-i18next";
 
 export const ProfileInformation = () => {
     const imageRef = useRef<HTMLInputElement>(null);
@@ -52,27 +53,26 @@ export const ProfileInformation = () => {
             })
         }
     }
+    const {t} = useTranslation();
     return (
         <>
             <div className="container-profile-information">
                 <div className="navigation-profile">
                     <Link to={'/profile'}
-                          className={`navigation-link-profile ${location.pathname === '/profile' ? 'active-link' : ''} `}>Profile
-                        settings</Link>
+                          className={`navigation-link-profile ${location.pathname === '/profile' ? 'active-link' : ''} `}>{t('app.profile-settings')}</Link>
                     <Link to={'/profile/payment'}
-                          className={`navigation-link-profile ${location.pathname === '/profile/payment' ? 'active-link' : ''} `}>Payment
-                        settings</Link>
+                          className={`navigation-link-profile ${location.pathname === '/profile/payment' ? 'active-link' : ''} `}>{t(`app.payment-settings`)}</Link>
                 </div>
                 <div className="content-profile-settings">
                     <div className="profile-photo">
                         <div className="title-container">
-                            <p>Profile photo</p>
+                            <p>{t('app.profile-photo')}</p>
                         </div>
                         <div className="container-photo-load" onClick={() => imageRef.current?.click()}>
                             {imageUrl ? <img src={imageUrl} alt="" className={'image-container-profile'}/> : null}
                             {!imageUrl ? (<div className="container-download-photo">
                                 <ImageDownloadPhoto/>
-                                <span>Download photo</span>
+                                <span>{t('app.download-photo')}</span>
                                 <input ref={imageRef} type="file" accept="image/*" multiple={false} hidden
                                        onChange={handleImageDownload}/>
                             </div>) : null}
@@ -84,34 +84,29 @@ export const ProfileInformation = () => {
                             <>
                                 <div className="container-inputs-profile">
                                     <div className="container-input">
-                                        <Input name={'first_name'} label={"Name"} placeholder={'Enter name'}
+                                        <Input name={'first_name'} label={t('auth.first_name')} placeholder={t('auth.first_name')}
                                                value={userData.first_name}
                                                onChange={handleChange}/>
                                     </div>
                                     <div className="container-input">
-                                        <Input name={'last_name'} label={"Surname"} placeholder={'Enter surname'}
+                                        <Input name={'last_name'} label={t('auth.last_name')} placeholder={t('auth.last_name')}
                                                value={userData.last_name} onChange={handleChange}/>
-                                    </div>
-                                    <div className="container-input">
-                                        <Input name={'email'} label={"Email"} placeholder={'Enter email'}
-                                               value={userData.email}
-                                               onChange={handleChange}/>
                                     </div>
                                 </div>
                                 <div className="container-inputs-profile">
 
                                     <div className="container-input">
-                                        <Input name={'carNumber'} label={"Car number"} placeholder={'Enter car number'}
+                                        <Input name={'carNumber'} label={t('auth.car_number')} placeholder={t('auth.car_number')}
                                                value={userData.carNumber} onChange={handleChange}/>
                                     </div>
                                     <div className="container-input">
-                                        <Input name={'phone'} label={"Phone"} placeholder={'Enter phone'}
+                                        <Input name={'phone'} label={t('auth.phone')} placeholder={t('auth.phone')}
                                                value={userData.phone}
                                                onChange={handleChange}/>
                                     </div>
                                     {dataUser?.type === 'tenant' ? (<div className="container-input">
-                                        <Input name={'tenantName'} label={"Company name"}
-                                               placeholder={'Enter company name'}
+                                        <Input name={'tenantName'} label={t('app.tenant_name')}
+                                               placeholder={t('app.tenant_name')}
                                                value={userData.tenantName}
                                                onChange={handleChange}/>
                                     </div>) : null}
@@ -122,8 +117,8 @@ export const ProfileInformation = () => {
                     </div>
                 </div>
 
-                <button className={'save-btn-profile'} onClick={updateHandler}> Save</button>
-                <button className={'clear-btn-profile'} onClick={updateHandler}> Clear</button>
+                <button className={'save-btn-profile'} onClick={updateHandler}> {t(`app.save`)}</button>
+                <button className={'clear-btn-profile'} onClick={updateHandler}> {t('app.clear')}</button>
             </div>
         </>
     )

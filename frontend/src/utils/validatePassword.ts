@@ -1,10 +1,12 @@
+
+
 export const validatePassword = (password: string, rePassword: string) => {
     if (password.length < 6) {
-        return 'Password must be at least 6 characters';
+        return false;
     }
     if (password !== rePassword) {
-        return "Passwords have to be the same"
+        return false
     }
-    return null
+    return true
 
 }
